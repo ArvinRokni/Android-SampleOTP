@@ -55,6 +55,7 @@ class VerifyFragment : Fragment() {
                 toast(state.message)
             }
             NetworkState.NetworkState.SUCCESS -> {
+                //TODO: you can get credential from ViewModel.data.value and save it!
                 (activity as LoginActivity).startMainActivity()
             }
         }
