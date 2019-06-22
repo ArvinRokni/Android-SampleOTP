@@ -1,11 +1,11 @@
 package com.fanap.sampleotp.data.repository.abs
 
-import com.fanap.sampleotp.data.callback.RequestCallBack
+import com.fanap.sampleotp.data.callback.RequestCallback
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-abstract class GeneralRepository<T>(val requestCallBack: RequestCallBack<T>) {
+abstract class GeneralRepository<T>(val requestCallBack: RequestCallback<T>) {
 
     fun request(
         call: Call<T>

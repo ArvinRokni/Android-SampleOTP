@@ -4,6 +4,7 @@ import ApiClient
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.fanap.sampleotp.data.api.ApiInterface
+import com.fanap.sampleotp.data.model.Credential
 import com.fanap.sampleotp.data.model.NetworkState
 import com.fanap.sampleotp.data.model.srv.VerifySrv
 import com.fanap.sampleotp.data.repository.VerifyRepository
@@ -11,12 +12,14 @@ import com.fanap.sampleotp.data.repository.VerifyRepository
 class VerifyViewModel : ViewModel() {
 
     val networkState: MutableLiveData<NetworkState>
+    val data: MutableLiveData<Credential>
     private val repository: VerifyRepository
     private val api: ApiInterface
 
     init {
         networkState = MutableLiveData()
-        repository = VerifyRepository(networkState)
+        data = MutableLiveData()
+        repository = VerifyRepository(networkState, data)
         api = ApiClient.getClient().create(ApiInterface::class.java)
     }
 

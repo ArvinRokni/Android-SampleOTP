@@ -3,10 +3,11 @@ package com.fanap.sampleotp.data.callback
 import androidx.lifecycle.MutableLiveData
 import com.fanap.sampleotp.data.model.NetworkState
 
-class SimpleCallback(var liveObject: MutableLiveData<NetworkState>) :
-    RequestCallback<Boolean> {
+class SimpleCallback<T>(var liveObject: MutableLiveData<NetworkState>, var data: MutableLiveData<T>) :
+    RequestCallback<T> {
 
-    override fun onRequestSuccess(result: Boolean?) {
+    override fun onRequestSuccess(result: T?) {
+        data.value = result
         liveObject.value =  NetworkState.success()
     }
 
